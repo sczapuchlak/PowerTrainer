@@ -140,22 +140,26 @@ def signin():
 def testimonials():
     return render_template('testimonials.html')
 
-@app.route("/logout")
-@login_required
+
+@app.route('/logout.html', methods=['GET'])
+# this will display the cart
 def logout():
+    return render_template('logout.html')
+
+
+
+
+@login_required
+@app.route("/signout", methods=[ 'GET'])
+def signout():
+    '''sign the current user out'''
+    '''remove the information from the session to sign a user out'''
+    del session['username']
+    del session['expiration']
     logout_user()
-    return redirect('logout.html')
-# @app.route("/signout", methods=['POST', 'GET'])
-# def signout():
-#     '''sign the current user out'''
-#     sign_user_out()
-#     return redirect('/')
+    return redirect('/logout.html')
 #
-# def sign_user_out():
-#     '''remove the information from the session to sign a user out'''
-#     del session['username']
-#     del session['expiration']
-#     logout_user()
+
 
 if __name__ == '__main__':
     init_db()
