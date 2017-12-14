@@ -43,8 +43,8 @@
       <td>98 pounds</td>
       <td>6 sets of 10</td>
     </tr>
-  </table>
-</div>
+
+
         <form method="POST" action="/newEntry">
         {{ form.hidden_tag() }}
         {{ form.exercise.label }} {{ form.exercise(size=50) }}
@@ -55,13 +55,17 @@
         <br>
         <input type="submit" value="Log Exercise">
     </form>
-        {% for text in userEntry%}
+        {% if userEntry %}
+
         <tr>
-            <td>{{text.exercise_name}}<td>
-            <td>{{text.exercise_weight}}<td>
-            <td>{{text.exercise_reps}}<td>
-        <tr>
-        {% endfor %}
+            <td>{{userEntry.exercise_name}}<td>
+            <td>{{userEntry.exercise_weight}}<td>
+            <td>{{userEntry.exercise_reps}}<td>
+        </tr>
+
+        {% endif %}
+            </table>
+            </div>
 <br><br>
 <h2>Weights Vs. Reps: Your Handy Guide</h2>
         <h3>Even experienced weightlifters can stack on new size and get stronger by turning up their work volume, a new study suggests.</h3>
