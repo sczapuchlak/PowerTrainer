@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Home</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/index.css') }}">
+</head>
+<body>
+ {% include "loggedInHeader.html" %}
+<div class="w3-light-grey w3-padding-64 w3-margin-bottom w3-center">
+
+  <h1 class="w3-jumbo">Your Gym Journal</h1>
+</div>
+
+<div class="w3-row-padding w3-content" style="max-width:1400px">
+  <div class="w3-twothird">
+
+    <div class="w3-justify">
+        <div class="w3-container">
+  <h2>Your Exercise Routine</h2>
+
+  <table class="w3-table-all w3-hoverable">
+    <thead>
+      <tr class="w3-light-grey">
+        <th class="exercise">Exercise</th>
+        <th class="weight">Weight</th>
+        <th class="repetitions">Repetition</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>Upright Rows</td>
+      <td>130 pounds</td>
+      <td>3 sets of 12</td>
+    </tr>
+    <tr>
+      <td>Bench Press</td>
+      <td>200 pounds</td>
+      <td>3 sets of 8</td>
+    </tr>
+    <tr>
+      <td>Squats</td>
+      <td>98 pounds</td>
+      <td>6 sets of 10</td>
+    </tr>
+  </table>
+</div>
+        <form method="POST" action="/newEntry">
+        {{ form.hidden_tag() }}
+        {{ form.exercise.label }} {{ form.exercise(size=50) }}
+        <br>
+        {{ form.weight.label }} {{ form.weight(size=10) }}
+        <br>
+        {{ form.repetition.label }} {{ form.repetition(size=20) }}
+        <br>
+        <input type="submit" value="Log Exercise">
+    </form>
+        {% for text in userEntry%}
+        <tr>
+            <td>{{text.exercise_name}}<td>
+            <td>{{text.exercise_weight}}<td>
+            <td>{{text.exercise_reps}}<td>
+        <tr>
+        {% endfor %}
+<br><br>
+<h2>Weights Vs. Reps: Your Handy Guide</h2>
+        <h3>Even experienced weightlifters can stack on new size and get stronger by turning up their work volume, a new study suggests.</h3>
+        <p>CONVENTIONAL GYM WISDOM has long offered a basic rule of thumb for novice and intermediate weightlifters: If you want to increase muscle size, lift relatively light weights for a lot of reps. If you want to get strong, lift heavy weights for just a few reps.</p>
+     <p>Simple, right? But a new study of relatively experienced weightlifters is challenging that old gym law.</p>
+    <p>The new findings: Lifting relatively light weights (about 50% of your one-rep max) for about 20–25 reps is just as efficient at building both strength and muscle size as lifting heavier weights (up to 90% of one-rep max) for eight to 12 reps, according to the study, the latest in a series done at McMaster University in Ontario.</p>
+<p>"Fatigue is the great equalizer here," Stuart Phillips, Ph.D., a kinesiology professor at McMaster and the senior author of the study, wrote about the research. "Lift to the point of exhaustion and it doesn't matter whether the weights are heavy or light."</p>
+<p>Phillips and his colleagues asked 49 men, each about 23-years-old, to do a 12-week program of total-body resistance training. The lifters were split into two groups: a high-rep group, which lifted at 30–50% of their one-rep max for 20–25 reps a set, and a low-rep group, which lifted at 75–90% of their one-rep max for 8–12 reps a set. Both groups lifted to failure, and did four exercises: inclined leg press, barbell bench press, machine-guided knee extension, and machine-guided shoulder press.</p>
+   <img src="static/images/guy.jpg" alt="Guy Lifting" style="width:800px;height:400px;padding-left: 15%">
+    <p>At the end of 12 weeks, the authors tested the participants’ muscle mass and found that both groups had made essentially equal gains in strength and size—except for in the bench press, which was higher among the low-rep group.
+
+Why the equal gains? Total work volume—that is, reps times weight—is a good way to force muscle growth.</p>
+        <p>“As long as you’re doing enough volume, you’ll positively adapt to the training,” says Sean Collins, C.S.C.S., a USA Powerlifting-certified trainer and powerlifting coach at Murder of Crows Barbell Club in Brooklyn. "Volume acts as a driver that overloads the body to make an adaptation, also known as supercompensation.”
+
+That’s good news, especially for guys who are hesitant to hit the heavy weights but still want to make gains.
+
+“Studies like this are a wake-up call to trainers and lifters who thought you exclusively had to lift heavy—at least 75% of your max, or about 10 reps and below—to get big,” says Sean Hyson, C.S.C.S., Men’s Fitness training director. “It’s also encouraging for older, beat-up guys with joint issues and injuries. They sometimes think they can’t train hard anymore, but if they just go lighter and do more reps, they can build muscle too.”</p>
+   <p>Bottom line: “It’s the effort you put in that matters most,” Hyson says. “Lifting heavier builds more strength, but lifting to failure with any weight can build bigger, more aesthetic muscles.”
+
+As with all single studies, it’s important not to take this one as law. We know the participants had been lifting for at least two years before the study, but we don’t know exactly what kinds of workout programs they were pursuing before taking part in the experiment.</p>
+    <p3 style="color: #1f628d"><a href=" https://www.mensfitness.com/training/build-muscle/if-you-want-build-muscle-and-gain-strength-lift-lighter-weights-more-reps">Source</a> </p3>
+    </div>
+  </div>
+  <div class="w3-third">
+    <div class="w3-container w3-light-grey">
+      <h2>Lifting and Failing?</h2>
+        <img src="static/images/girl.jpg" alt="Girl Lifting" style="width:400px;height:300px; ">
+      <p class="w3-justify">Plenty of people will tell you they don’t care that much about winning, but there isn’t a single honest person on earth who will tell you he/she likes losing. The problem with losing is that you can’t undo it. You can’t go back and fix what you did wrong, even if you know exactly what it is. </p><p>That leaves you to cope with the loss—you have to deal with it one way or another even if you try to pretend it didn’t happen.
+
+What you do in response to a loss is what determines not only the meaning and value of that experience, but your future success. </p><p>Losing or failing itself isn’t the end of the world. Yes, it’s horrible and you at least momentarily believe you’ll never recover, but it’s your choice to surrender to those feelings or to slap yourself in the face and take advantage of the opportunity to learn from it and improve.
+
+</p><p>hen I talk about losing, I mean the whole range of bad competition or even training experiences. This could be anything from bombing out in competition to simply failing to reach the goals you set for yourself in your training cycle.</p>
+    <br> <p3 style="color: #1f628d"><a href=" https://www.catalystathletics.com/article/2114/What-To-Do-After-A-Loss">Source</a> </p3>
+    </div>
+    <br>
+    <div class="w3-container w3-light-grey w3-justify">
+      <h2>How Do You Warm Up For A Weightlifting Exercise?</h2>
+        <img src="static/images/guy2.jpg" alt="Guy2" style="width:400px;height:300px; ">
+      <p class="w3-justify">At this point, I can usually answer questions by pasting a link to an article or video of mine. Every once in a while, I get surprised that I don’t have something to send because the question is so obviously necessary to answer, and is asked so much. This is one of them—how do you warm up for an exercise?
+      </p>
+        <p>The first question you have to ask is what exercise and what circumstances. You don’t follow the exact same process to warm up for your competition snatch and a few sets of 4 in the back squat. So I’m going to break this into four categories, but first let’s cover some general practices that apply to all situations.</p>
+    <p>For any exercise, intensity and rep scheme, the basic procedure is starting with an empty bar and then spending a few sets on your first warm-up weight (the first weight you load after the bar—how much this is will depend a bit on the exercise. Something like a snatch will be the least weight, a clean & jerk a bit more, and a back squat even more—probably around 30-40% of your max single). Get warm and consistent with the movement here before moving up.</p>
+   <p3 style="color: #1f628d"><a href=" https://www.catalystathletics.com/article/2102/How-Do-You-Warm-Up-For-A-Weightlifting-Exercise/">Source</a> </p3>
+    </div>
+    <br>
+
+  </div>
+</div>
+
+
+ {% include "footer.html" %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+    <title>SignUp</title>
+
+
+
+
+{% block body %}
+    <br><br>
+    <h1>Sign up for PowerTrainer</h1>
+    <form method="POST" action="/register">
+        {{ form.hidden_tag() }}
+        {{ form.username.label }} {{ form.username(size=50) }}
+        <br>
+        {{ form.password.label }} {{ form.password(size=50) }}
+        <br>
+        {{ form.email.label }} {{ form.email(size=50) }}
+        <br>
+        <input type="submit" value="register">
+    </form>
+    <p><a href="login.html">Login</a></p>
+
+
+{% endblock %}
